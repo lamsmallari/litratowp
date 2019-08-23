@@ -1,0 +1,268 @@
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+.main-navigation {
+clear: both;
+display: block;
+float: left;
+width: 100%;
+
+ul {
+  // display: none;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  transition: $t1;
+
+  li:hover > ul,
+  li.focus > ul
+  {
+    left: auto;
+    right: 0;
+    opacity: 1;
+  }
+}
+
+ul ul {
+  background-color: rgba(29, 29, 29, 0.8);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  float: left;
+  position: absolute;
+  top: 100%;
+  left: -999em;
+  z-index: 99999;
+  opacity: 0;
+
+  li:hover > ul,
+  li.focus > ul
+  {
+    right: 100%;
+  }
+
+  a {
+    color: #fff;
+    padding: 1.5rem;
+    width: 20rem;
+  }
+}
+
+ul ul ul {
+  left: -999em;
+  top: 0;
+}
+
+li {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  transition: $t1;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  font-size: 1.4rem;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.menu-main-container {
+  display: none;
+  
+  @include medium-breakpoint {
+    display: block;
+  }
+
+  & > ul {
+    display: flex;
+    justify-content: flex-end;
+    
+    & > li {
+      &:hover {
+        background-color: rgba(29, 29, 29, 0.8);
+      }
+    }
+
+    & > li > a {
+      color: #fff;
+      padding: 1.5rem 3rem;
+    }
+  }
+}
+}
+
+/*--------------------------------------------------------------
+## Mobile Menu
+--------------------------------------------------------------*/
+.mobile-menu-navigation {
+display: inline-block;
+width: 40px;
+height: 40px;
+background-color: #fff;
+border-radius: 50%;
+position: relative;
+box-shadow: 0 7px 17px -7px rgba(23,23,23,0.6);
+
+@include medium-breakpoint {
+  display: none;
+}
+
+span,
+span::before,
+span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -1px;
+  width: 20px;
+  height: 2px;
+  background-color: #222;
+}
+
+span::before,
+span::after {
+  content: '';
+  display: block;
+  transition: 0.2s;
+}
+
+span::before {
+  transform: translateY(-5px);
+}
+
+span::after {
+  transform: translateY(5px);
+}
+}
+
+.mm-body--open .mobile-menu-navigation {
+span {
+  height: 0;
+}
+
+span:before {
+  transform: rotate(45deg);
+}
+
+span:after {
+  transform: rotate(-45deg);
+}
+}
+
+#mobile-menu-container:not( .mm ) {
+display: none;
+}
+
+.mm {
+a {
+  &:hover, &:focus, &:active {
+    color: #fff;
+  }
+}
+}
+
+/*--------------------------------------------------------------
+## Archive page
+--------------------------------------------------------------*/
+.archive-navigation {
+margin: 5rem 0 0;
+text-align: center;
+width: 100%;
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+
+  a {
+    @extend %buttons;
+    background: $muted-background;
+    border: $muted-border;
+    color: $muted-color;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $muted-color-hover;
+      border: $muted-border-hover;
+      background: $muted-background-hover;
+    }
+  }
+
+  &.active a {
+    color: $muted-color-hover;
+    border: $muted-border-hover;
+    background: $muted-background-hover;
+  }
+  
+  &.active a, &.disabled a {
+    pointer-events: none;
+  }
+}
+}
+
+/*--------------------------------------------------------------
+## Single page
+--------------------------------------------------------------*/
+.post-navigation .nav-links {
+  display: flex;
+  justify-content: center;
+  max-width: 75rem;
+  width: 100%;
+  margin: 0 auto 4em;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+
+  @include small-breakpoint {
+    flex-direction: row;
+  }
+
+  > div {
+    width: 100%;
+    position: relative;
+    text-align: center;
+
+    @include small-breakpoint {
+      width: 48%;
+    }
+  }
+
+  a {
+    padding: 1rem;
+    display: block;
+    color: $alternate-color;
+    border-radius: 3px;
+
+    &:hover {
+      text-decoration: none;
+      background: #f7f7f7;
+    }
+
+    &:before {
+      display: block;
+      color: $gray-text-1;
+      text-transform: uppercase;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+  }
+
+  .nav-previous {
+    a:before {
+      content: 'Previous Post';
+    }
+  }
+
+  .nav-next {
+    a:before {
+      content: 'Next Post';
+    }
+  }
+}

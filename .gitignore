@@ -1,0 +1,7 @@
+# Ignore Node Modules
+litrato/node_modules
+index.php
+
+# Sass Cache
+.sass-cache
+.DS_Store

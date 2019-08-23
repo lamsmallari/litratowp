@@ -1,0 +1,111 @@
+// Media query for mobile first layout 
+@mixin small-breakpoint {
+  @media (min-width: #{$mobile}) {
+    @content;
+  } 
+}
+
+@mixin small-breakpoint-max {
+  @media (max-width: #{$mobile}) {
+    @content;
+  } 
+}
+
+// Break on tablet
+@mixin medium-breakpoint {
+  @media (min-width: #{$tablet}) {
+    @content;
+  } 
+}
+
+// Break on desktop
+@mixin large-breakpoint {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+// Page header styles
+@mixin default-page-header {
+  background-image: $gradient-black-stripe-1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 9rem 1.5rem 3rem;
+  margin-bottom: 4.5rem;
+  position: relative;
+  overflow: hidden;
+
+  @include medium-breakpoint {
+    padding: 13rem 1.5rem 3rem;
+  }
+}
+
+// Single Post Image Banner
+@mixin single-post-image-banner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    min-width: 100%;
+    min-height: auto;
+    height: auto;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+
+    transition: all 800ms ease 300ms;
+    transform: translateY(-2%) translateX(-50%);
+    opacity: 0;
+
+    @include small-breakpoint {
+      transform: translateY(-33%) translateX(-50%);
+    }
+
+    &.loaded {
+      opacity: 0.85;
+      transform: translateY(0) translateX(-50%);
+
+      @include small-breakpoint {
+        transform: translateY(-35%) translateX(-50%);
+      }
+    }
+  }
+}
+
+// Post Thumbnails Archives
+@mixin post-thumbnail-archives {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    border: none;
+    outline: none;
+    background: none;
+
+    transition: all 800ms ease 300ms;
+    transform: translateY(0) translateX(-50%);
+    opacity: 0;
+
+    &.loaded {
+      opacity: 0.85;
+    }
+  }
+}
