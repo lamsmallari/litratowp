@@ -263,6 +263,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column-reverse;
+    align-items: flex-end;
     max-width: 1346px;
 
     @include large-breakpoint {

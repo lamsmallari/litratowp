@@ -5,92 +5,92 @@
 ## Menus
 --------------------------------------------------------------*/
 .main-navigation {
-clear: both;
-display: block;
-float: left;
-width: 100%;
-
-ul {
-  // display: none;
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-  transition: $t1;
-
-  li:hover > ul,
-  li.focus > ul
-  {
-    left: auto;
-    right: 0;
-    opacity: 1;
-  }
-}
-
-ul ul {
-  background-color: rgba(29, 29, 29, 0.8);
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  clear: both;
+  display: block;
   float: left;
-  position: absolute;
-  top: 100%;
-  left: -999em;
-  z-index: 99999;
-  opacity: 0;
+  width: 100%;
 
-  li:hover > ul,
-  li.focus > ul
-  {
-    right: 100%;
+  ul {
+    // display: none;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    transition: $t1;
+
+    li:hover > ul,
+    li.focus > ul
+    {
+      left: auto;
+      right: 0;
+      opacity: 1;
+    }
+  }
+
+  ul ul {
+    background-color: rgba(29, 29, 29, 0.8);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    float: left;
+    position: absolute;
+    top: 100%;
+    left: -999em;
+    z-index: 99999;
+    opacity: 0;
+
+    li:hover > ul,
+    li.focus > ul
+    {
+      right: 100%;
+    }
+
+    a {
+      color: #fff;
+      padding: 1.5rem;
+      width: 20rem;
+    }
+  }
+
+  ul ul ul {
+    left: -999em;
+    top: 0;
+  }
+
+  li {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    transition: $t1;
   }
 
   a {
-    color: #fff;
-    padding: 1.5rem;
-    width: 20rem;
-  }
-}
-
-ul ul ul {
-  left: -999em;
-  top: 0;
-}
-
-li {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  transition: $t1;
-}
-
-a {
-  display: block;
-  text-decoration: none;
-  font-size: 1.4rem;
-  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-.menu-main-container {
-  display: none;
-  
-  @include medium-breakpoint {
     display: block;
+    text-decoration: none;
+    font-size: 1.4rem;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   }
 
-  & > ul {
-    display: flex;
-    justify-content: flex-end;
+  & > div {
+    display: none;
     
-    & > li {
-      &:hover {
-        background-color: rgba(29, 29, 29, 0.8);
+    @include medium-breakpoint {
+      display: block;
+    }
+
+    & > ul {
+      display: flex;
+      justify-content: flex-end;
+      
+      & > li {
+        &:hover {
+          background-color: rgba(29, 29, 29, 0.8);
+        }
+      }
+
+      & > li > a {
+        color: #fff;
+        padding: 1.5rem 3rem;
       }
     }
-
-    & > li > a {
-      color: #fff;
-      padding: 1.5rem 3rem;
-    }
   }
-}
 }
 
 /*--------------------------------------------------------------

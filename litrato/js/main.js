@@ -299,6 +299,8 @@
   }
 
   function mobileMenu() {
+    if( !document.getElementById('mobile-menu-container') ) return;
+
     document.addEventListener("DOMContentLoaded", function() {
       const node = document.querySelector("#mobile-menu-container");
       const menu = new MmenuLight(node, {
