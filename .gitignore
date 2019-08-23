@@ -1,6 +1,6 @@
 # Ignore Node Modules
 litrato/node_modules
-index.php
+/index.php
 
 # Sass Cache
 .sass-cache
