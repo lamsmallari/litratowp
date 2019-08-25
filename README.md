@@ -1,1 +1,1 @@
-# litrato_dev
+# Litrato Theme
