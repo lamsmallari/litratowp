@@ -76,6 +76,10 @@
       @include small-breakpoint {
         transform: translateY(-35%) translateX(-50%);
       }
+
+      & + .load-bar-container {
+        opacity: 0;
+      }
     }
   }
 }

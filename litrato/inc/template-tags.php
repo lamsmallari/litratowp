@@ -215,6 +215,13 @@ if ( ! function_exists( 'litrato_blog_post_banner_image' ) ) :
 			$bg_url_full = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
 			echo '<div class="post-thumbnail">';
 			echo '<img class="featured-image-full" alt="'. get_the_title() .'" data-src="'. $bg_url_full[0] .'" />';
+			echo '<div class="load-bar-container">
+								<div class="load-bar">
+									<div class="bar"></div>
+									<div class="bar"></div>
+									<div class="bar"></div>
+								</div>
+							</div>';
 			echo '</div>';
 		}
 
