@@ -97,71 +97,87 @@
 ## Mobile Menu
 --------------------------------------------------------------*/
 .mobile-menu-navigation {
-display: inline-block;
-width: 40px;
-height: 40px;
-background-color: #fff;
-border-radius: 50%;
-position: relative;
-box-shadow: 0 7px 17px -7px rgba(23,23,23,0.6);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 7px 17px -7px rgba(23,23,23,0.6);
 
-@include medium-breakpoint {
-  display: none;
-}
+  @include medium-breakpoint {
+    display: none;
+  }
 
-span,
-span::before,
-span::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -10px;
-  margin-top: -1px;
-  width: 20px;
-  height: 2px;
-  background-color: #222;
-}
+  span,
+  span::before,
+  span::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -1px;
+    width: 20px;
+    height: 2px;
+    background-color: #222;
+  }
 
-span::before,
-span::after {
-  content: '';
-  display: block;
-  transition: 0.2s;
-}
+  span::before,
+  span::after {
+    content: '';
+    display: block;
+    transition: 0.2s;
+  }
 
-span::before {
-  transform: translateY(-5px);
-}
+  span::before {
+    transform: translateY(-5px);
+  }
 
-span::after {
-  transform: translateY(5px);
-}
+  span::after {
+    transform: translateY(5px);
+  }
 }
 
 .mm-body--open .mobile-menu-navigation {
-span {
-  height: 0;
+  span {
+    height: 0;
+  }
+
+  span:before {
+    transform: rotate(45deg);
+  }
+
+  span:after {
+    transform: rotate(-45deg);
+  }
 }
 
-span:before {
-  transform: rotate(45deg);
-}
+#mobile-menu-container {
+  &:not( .mm ) {
+    display: none;
+  }
 
-span:after {
-  transform: rotate(-45deg);
-}
-}
+  &[data-mm-title="Menu"] {
+    &:before {
+      display: none;
+    }
 
-#mobile-menu-container:not( .mm ) {
-display: none;
+    &:after {
+      padding-left: 2rem;
+    }
+  }
 }
 
 .mm {
-a {
-  &:hover, &:focus, &:active {
-    color: #fff;
+  a {
+    &:hover, &:focus, &:active {
+      color: #fff;
+    }
   }
-}
+
+  li:not(.menu-item-has-children):before {
+    display: none;
+  }
 }
 
 /*--------------------------------------------------------------

@@ -27,6 +27,14 @@
         }
       ?>
 
+      <div class="load-bar-container">
+        <div class="load-bar">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+
       <div class="article-inner">
         <?php 
           // date
@@ -56,7 +64,8 @@
         <?php litrato_display_social_media_links(); ?>
       
         <div class="home__site-info">
-          <span><?php printf( esc_html__( '&copy; %s', 'litrato' ), get_bloginfo('name') ); ?></span> <?php litrato_footer_pages_links() ?>
+          <span><?php printf( esc_html__( '&copy; %s', 'litrato' ), get_bloginfo('name') ); ?></span> 
+          <?php litrato_footer_pages_links() ?>
         </div>
       </div>
 

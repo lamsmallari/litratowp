@@ -67,13 +67,14 @@
 					</a>
 				</div><!-- .site-navigation-container -->
 				
-				<?php
-					wp_nav_menu( array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'mobile-menu',
-						'container_id'   => 'mobile-menu-container',
-					) );
-				?>
+				<div id="mobile-menu-container">
+					<?php
+						wp_nav_menu( array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'mobile-menu'
+						) );
+					?>
+				</div>
 				
 			</div>
 		</div>
