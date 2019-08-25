@@ -228,22 +228,24 @@
       fadeOut: fadeOut
     };
 
-    function revealArticle(id) {
-      state.fadeIn(document.getElementById(id), "flex");
+    function revealArticle(prevId, currentId) {
+      const elPrevious = document
+        .getElementById(prevId)
+        .querySelector(".article-inner");
 
       // get item's info
-      const container = document
-        .getElementById(id)
+      const elCurrent = document
+        .getElementById(currentId)
         .querySelector(".article-inner");
 
       // reset item's animation
-      container.style = "";
+      elPrevious.style = "";
 
       // reveal item's info
       setTimeout(function() {
-        container.style.opacity = "1";
-        container.style.transform = "translateY(0)";
-      }, 250);
+        elCurrent.style.opacity = "1";
+        elCurrent.style.transform = "translateY(0)";
+      });
     }
 
     // INITIAL LOAD ACTIONS
@@ -253,7 +255,7 @@
     document.getElementById(state.currentId).classList.add("article-active");
 
     // reveal current article's info
-    revealArticle(state.currentId);
+    revealArticle(state.prevId, state.currentId);
 
     // ON CLICK ACTIONS
     // event listener for thumbnail buttons
@@ -274,9 +276,6 @@
           // exit when requesting same article id
           if ("post-" + postID === state.currentId) return;
 
-          // fadeOut current displayed post
-          state.fadeOut(document.getElementById(state.currentId));
-
           // update prevId
           state.prevId = state.currentId;
 
@@ -287,12 +286,15 @@
           document
             .getElementById(state.prevId)
             .classList.remove("article-active");
+
+          document.getElementById(state.prevId).style = "";
+
           document
             .getElementById(state.currentId)
             .classList.add("article-active");
 
           // fadeIn next target article
-          revealArticle(state.currentId);
+          revealArticle(state.prevId, state.currentId);
 
           event.preventDefault();
           event.stopPropagation();

@@ -70,7 +70,12 @@
   .custom-logo {
     margin: 1.0rem 0 0;
   }
+  
+  .svg-logo img {
+    max-width: 105px;
+  }
 }
+
 
 /*--------------------------------------------------------------
 # Pages Template
@@ -104,7 +109,9 @@
     height: 100%;
     width: 100%;
     margin: 0;
-    display: none;
+    display: flex;
+    opacity: 0;
+    transition: all 500ms ease;
     align-items: center;
     overflow: hidden;
 
@@ -122,7 +129,11 @@
     }
     
     &.article-active {
-      display: flex;
+      opacity: 1;
+
+      .article-featured-image {
+        display: block;
+      }
     }
 
     &.bg-pattern-1 {
@@ -205,6 +216,10 @@
   transition: all 800ms ease 300ms;
   transform: translateY(-2%) translateX(-50%);
   opacity: 0;
+
+  &:not(.loaded) {
+    display: none;
+  }
 
   &.loaded {
     transform: translateY(0%) translateX(-50%);
@@ -319,11 +334,12 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column-reverse;
-    align-items: flex-end;
+    align-items: center;
     max-width: 1346px;
 
     @include large-breakpoint {
       flex-direction: row;
+      align-items: flex-end;
     }
   }
 }
