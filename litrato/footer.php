@@ -21,8 +21,8 @@
 					if (has_custom_logo()) {
 						the_custom_logo();
 					} else {
-						echo '<a href="'. site_url() .'" class="custom-logo-link" rel="home">
-									'. file_get_contents( get_template_directory_uri() . '/images/logo-colored.svg' ) .'
+						echo '<a href="'. site_url() .'" class="custom-logo-link svg-logo" rel="home">
+									<img src="'. get_template_directory_uri() . '/images/logo-png.png' .'" alt="Litrato Logo">
 									</a>';
 					}
 				}
