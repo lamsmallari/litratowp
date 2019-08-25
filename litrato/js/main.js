@@ -228,11 +228,34 @@
       fadeOut: fadeOut
     };
 
+    function revealArticle(id) {
+      state.fadeIn(document.getElementById(id), "flex");
+
+      // get item's info
+      const container = document
+        .getElementById(id)
+        .querySelector(".article-inner");
+
+      // reset item's animation
+      container.style = "";
+
+      // reveal item's info
+      setTimeout(function() {
+        container.style.opacity = "1";
+        container.style.transform = "translateY(0)";
+      }, 250);
+    }
+
+    // INITIAL LOAD ACTIONS
     // set active class on article first-child
     state.currentId = articles[0].getAttribute("id");
     state.prevId = articles[0].getAttribute("id");
     document.getElementById(state.currentId).classList.add("article-active");
 
+    // reveal current article's info
+    revealArticle(state.currentId);
+
+    // ON CLICK ACTIONS
     // event listener for thumbnail buttons
     thumbnailsContainer.addEventListener(
       "click",
@@ -269,7 +292,7 @@
             .classList.add("article-active");
 
           // fadeIn next target article
-          state.fadeIn(document.getElementById(state.currentId), "flex");
+          revealArticle(state.currentId);
 
           event.preventDefault();
           event.stopPropagation();
@@ -299,7 +322,7 @@
   }
 
   function mobileMenu() {
-    if( !document.getElementById('mobile-menu-container') ) return;
+    if (!document.getElementById("mobile-menu-container")) return;
 
     document.addEventListener("DOMContentLoaded", function() {
       const node = document.querySelector("#mobile-menu-container");

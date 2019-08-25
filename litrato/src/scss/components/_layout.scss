@@ -223,6 +223,10 @@
   width: 100%;
   z-index: 3;
   text-align: center;
+  opacity: 0;
+
+  transition: all 500ms ease;
+  transform: translateY(10px);
   
   @include small-breakpoint {
     margin: 0 auto 8rem;
