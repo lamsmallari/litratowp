@@ -228,7 +228,7 @@ if ( ! function_exists( 'litrato_blog_post_banner_image' ) ) :
 
 		<div class="banner-lightbox">
 			<div class="banner-lightbox-container">
-				<img src="'.$bg_url_full[0].'">
+				<img src="<?php echo $bg_url_full[0] ?>">
 			</div>
 		</div>
 		<?php

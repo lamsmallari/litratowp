@@ -214,7 +214,7 @@
     const articlesContainer = document.getElementById("home-featured-articles");
     const thumbnailsContainer = document.getElementById("home-banner-nav");
 
-    // if elements not exists then exit
+    // elements should exists
     if (!articlesContainer || !thumbnailsContainer) return;
 
     // select all articles
@@ -223,36 +223,13 @@
     // set default state
     let state = {
       currentId: "",
-      prevId: "",
-      fadeIn: fadeIn,
-      fadeOut: fadeOut
+      prevId: ""
     };
-
-    function revealArticle(prevId, currentId) {
-      const elPrevious = document
-        .getElementById(prevId)
-        .querySelector(".article-inner");
-
-      // get item's info
-      const elCurrent = document
-        .getElementById(currentId)
-        .querySelector(".article-inner");
-
-      // reset item's animation
-      elPrevious.style = "";
-
-      // reveal item's info
-      setTimeout(function() {
-        elCurrent.style.opacity = "1";
-        elCurrent.style.transform = "translateY(0)";
-      });
-    }
 
     // INITIAL LOAD ACTIONS
     // set active class on article first-child
     state.currentId = articles[0].getAttribute("id");
     state.prevId = articles[0].getAttribute("id");
-    document.getElementById(state.currentId).classList.add("article-active");
 
     // reveal current article's info
     revealArticle(state.prevId, state.currentId);
@@ -279,19 +256,8 @@
           // update prevId
           state.prevId = state.currentId;
 
-          // update activeId
+          // update currentId
           state.currentId = "post-" + postID;
-
-          // update active classes
-          document
-            .getElementById(state.prevId)
-            .classList.remove("article-active");
-
-          document.getElementById(state.prevId).style = "";
-
-          document
-            .getElementById(state.currentId)
-            .classList.add("article-active");
 
           // fadeIn next target article
           revealArticle(state.prevId, state.currentId);
@@ -302,6 +268,33 @@
       },
       false
     );
+
+    function revealArticle(prevId, currentId) {
+      // remove active class from previous article
+      for (var i = 0; i < articles.length; i++) {
+        articles[i].classList.remove("article-active");
+      }
+
+      // update active class
+      document.getElementById(currentId).classList.add("article-active");
+
+      // get previous item's info
+      const elPrevious = document
+        .getElementById(prevId)
+        .querySelector(".article-inner");
+
+      // get current item's info
+      const elCurrent = document
+        .getElementById(currentId)
+        .querySelector(".article-inner");
+
+      // reset previous item's animation
+      elPrevious.style = "";
+
+      // reveal current item's info
+      elCurrent.style.opacity = "1";
+      elCurrent.style.transform = "translateY(0)";
+    }
   }
 
   function singlePostLightbox() {

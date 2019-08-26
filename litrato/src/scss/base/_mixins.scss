@@ -79,6 +79,7 @@
 
       & + .load-bar-container {
         opacity: 0;
+        transform: translateY(-3px);
       }
     }
   }
