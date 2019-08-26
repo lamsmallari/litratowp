@@ -187,7 +187,7 @@ endif;
 
 if ( ! function_exists( 'litrato_footer_pages_links' ) ) :
 	/**
-	 * Prints banner image for a blog post
+	 * Prints footer pages links
 	 */
 	function litrato_footer_pages_links() {
 		$pages = get_option('pages');
@@ -205,32 +205,33 @@ endif;
 
 if ( ! function_exists( 'litrato_blog_post_banner_image' ) ) :
 	function litrato_blog_post_banner_image() {
-		if( !is_single() ) {
-			return;
-		}
-		
-		echo '<div class="single-post-featured-image">';
+		if( !is_single() ) return;
+		?>
+		<div class="single-post-featured-image">
+			<?php 
+				if ( has_post_thumbnail( get_the_ID() ) ) : 
 
-		if ( has_post_thumbnail( get_the_ID() ) ) {
-			$bg_url_full = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
-			echo '<div class="post-thumbnail">';
-			echo '<img class="featured-image-full" alt="'. get_the_title() .'" data-src="'. $bg_url_full[0] .'" />';
-			echo '<div class="load-bar-container">
-								<div class="load-bar">
-									<div class="bar"></div>
-									<div class="bar"></div>
-									<div class="bar"></div>
-								</div>
-							</div>';
-			echo '</div>';
-		}
+				$bg_url_full = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
+			?>
+				<div class="post-thumbnail">
+					<img class="featured-image-full" alt="<?php echo get_the_title() ?>" data-src="<?php echo $bg_url_full[0] ?>" />
+					<div class="load-bar-container">
+						<div class="load-bar">
+							<div class="bar"></div>
+							<div class="bar"></div>
+							<div class="bar"></div>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
+		</div>
 
-		echo '</div>';
-		echo '<div class="banner-lightbox">';
-			echo '<div class="banner-lightbox-container">';
-				echo '<img src="'.$bg_url_full[0].'">';
-			echo '</div>';
-		echo '</div>';
+		<div class="banner-lightbox">
+			<div class="banner-lightbox-container">
+				<img src="'.$bg_url_full[0].'">
+			</div>
+		</div>
+		<?php
 	}
 endif;
 
@@ -239,12 +240,15 @@ if ( ! function_exists( 'litrato_blog_post_banner_image_toggle_lightbox_button' 
 		if ( !is_single() && !has_post_thumbnail( get_the_ID() ) ) {
 			return;
 		}
+		?>
 
-		echo '<button class="show-image-banner-button">';
-			echo '<div>';
-			echo '<span><span>Show cover image</span></span> ';
-			echo file_get_contents( get_template_directory_uri() . '/images/search-plus.svg' );
-			echo '</div>';
-		echo '</button>';
+		<button class="show-image-banner-button">
+			<div>
+			<span><span>Show cover image</span></span> 
+				<?php echo file_get_contents( get_template_directory_uri() . '/images/search-plus.svg' ); ?>
+			</div>
+		</button>
+
+		<?php
 	}
 endif;

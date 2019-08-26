@@ -201,8 +201,6 @@
 }
 
 .article-featured-image {
-  // background-size: cover;
-  // background-position: top -50px center;
   position: absolute;
   top: 0;
   left: 50%;
@@ -561,7 +559,6 @@
         display: block;
         margin: 0 0 1rem;
       }
-      
     }
 
     svg {
@@ -1100,7 +1097,6 @@
 --------------------------------------------------------------*/
 #secondary {
   background-color: #f7f7f7;
-  
   padding: 5rem 0 3rem;
 
   .container {
@@ -1124,6 +1120,12 @@
 
   a {
     color: $gray-text-1;
+  }
+
+  h2 {
+    @include large-breakpoint {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -1154,12 +1156,6 @@
 .updated:not(.published) {
   display: none;
 }
-
-// .page-content,
-// .entry-content,
-// .entry-summary {
-//   margin: 1.5em 0 0;
-// }
 
 .page-links {
   clear: both;
@@ -1466,4 +1462,8 @@ object {
       opacity: 0.6;
     }
   }
+}
+
+a[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."] {
+  display: none;
 }

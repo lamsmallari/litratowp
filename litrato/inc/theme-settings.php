@@ -94,6 +94,5 @@ add_action( 'admin_init', 'custom_settings_page_setup' );
 function handle_sanitization_validation_escaping_text($option)
 {
   $option = sanitize_text_field($option);
-  
   return $option;
 }
