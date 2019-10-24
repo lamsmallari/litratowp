@@ -23,8 +23,7 @@ A free Wordpress theme with customizable features like editing archive pages ban
 
 ### Changelog
 
-**1.0 - August 25, 2019**
-Initial release
+- **1.0 - August 25, 2019** Initial release
 
 ---
 
