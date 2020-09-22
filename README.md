@@ -1,7 +1,5 @@
 # Litrato WP Theme
 
-[THEME DEMO](http://lamswpdemo.rf.gd/litrato/)
-
 A free Wordpress theme with customizable features like editing archive pages banners and more. Optimized with image lazy load for faster loading speed.
 
 ![Alt text](https://himigatliwanag.files.wordpress.com/2019/10/litrato-screenshot.jpg "Litrato WP Theme")
