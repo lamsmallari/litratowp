@@ -10,7 +10,7 @@
     "url": "git+https://github.com/taniarascia/primitive.git"
   },
   "dependencies": {
-    "node-sass": "^4.13.1"
+    "node-sass": "^6.0.1"
   },
   "scripts": {
     "sass": "node-sass ./src/scss/ -o ./css/ -w --output-style expanded | node-sass ./src/scss/main.scss ./css/main.min.css -w --output-style compressed"
