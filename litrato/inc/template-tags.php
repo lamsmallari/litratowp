@@ -193,10 +193,12 @@ if ( ! function_exists( 'litrato_footer_pages_links' ) ) :
 		$pages = get_option('pages');
 		$html  = '';
 
-		foreach ( $pages as $key => $value ) {
-			$html .= ' - ' . '<a href="'. esc_url( __( get_the_permalink( $key ), 'litrato' ) )  .'">';
-			$html .= get_the_title( $key );
-			$html .= '</a>';
+		if (!empty($pages)) {
+			foreach ( $pages as $key => $value ) {
+				$html .= ' - ' . '<a href="'. esc_url( __( get_the_permalink( $key ), 'litrato' ) )  .'">';
+				$html .= get_the_title( $key );
+				$html .= '</a>';
+			}
 		}
 
 		echo $html;
